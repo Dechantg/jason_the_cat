@@ -7,9 +7,12 @@ const arg = process.argv.slice(2);
 const breed = arg[0].toString();
 
 
-const url = `https://api.thecatapi.com/v1/breeds/search?q=${breed}`;
 
-request(url, (error, responce, body) => {
+const fetchBreedDescription = function (breedName, callback) {
+
+  const url = `https://api.thecatapi.com/v1/breeds/search?q=${breedName}`;
+
+  request(url, (error, responce, body) => {
   if (error) {
     console.log(' error accessing page', error);
     process.exit();
@@ -23,3 +26,6 @@ request(url, (error, responce, body) => {
   
   }
 });
+};
+
+fetchBreedDescription(breed, callback)
